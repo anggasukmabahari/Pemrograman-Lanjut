@@ -1,0 +1,109 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+	class variabel {
+		public : 
+			int a, i, j;
+			
+			void display () {
+				cout << "     ===========================================" << endl;
+				cout << "                Operasi Aritmatika'" << endl;
+				cout << "     ===========================================" << endl << endl;
+				cout << "     1. Penjumlahan" << endl;
+				cout << "     2. Pengurangan" << endl;
+				cout << "     3. Perkalian" << endl;
+				cout << "     4. Pembagian" << endl;
+				cout << "     5. Keluar/Exit" << endl << endl;
+			}		
+	};
+	
+	class penjumlahan : public variabel {
+		public : 
+		void jumlah () {
+			cout << "     Bilangan Pertama : "; cin >> i;
+			cout << "     Bilangan Kedua : "; cin >> j;
+			a = i + j;
+			cout << "     Hasil Penjumlahan : " << a << endl;
+		}
+	};
+	
+	class pengurangan : public variabel {
+		public : 
+		void kurang () {
+			cout << "     Bilangan Pertama : "; cin >> i;
+			cout << "     Bilangan Kedua : "; cin >> j;
+			a = i - j;
+			cout << "     Hasil Pengurangan : " << a << endl;
+		}
+	};
+	
+	class perkalian : public variabel {
+		public : 
+		void kali () {
+			cout << "     Bilangan Pertama : "; cin >> i;
+			cout << "     Bilangan Kedua : "; cin >> j;
+			a = i * j;
+			cout << "     Hasil Perkalian : " << a << endl;
+		}
+	};
+	
+	class pembagian : public variabel {
+		public : 
+		void bagi () { 
+			cout << "     Bilangan Pertama : "; cin >> i;
+			cout << "     Bilangan Kedua : "; cin >> j;
+			a = i / j;
+			cout << "     Hasil Pembagian : " << a << endl;
+		}
+	};
+	
+	class afterDisplay : public penjumlahan, public pengurangan, public perkalian, public pembagian{
+		public : 
+		void bagi () { 
+			float a, i , j;
+			cout << "     Bilangan Pertama : "; cin >> i;
+			cout << "     Bilangan Kedua : "; cin >> j;
+			a = i / j;
+			cout << "     Hasil Pembagian : " << a << endl;
+			cout << "     ===== OVERRIDING =====" << endl;
+		}
+	};
+	
+	int main () {
+		afterDisplay *obj = new afterDisplay;
+		variabel *obj1 = new variabel;
+		choice :
+		int choice;
+		obj1->display();
+		cout << "     Masukkan Pilihan (Nomor) : "; cin >> choice;
+		switch (choice) {
+			case 1 :
+				obj->jumlah();
+				getch ();
+				system ("cls");
+				goto choice;
+				break;
+			case 2 : 
+				obj->kurang();
+				getch ();
+				system ("cls");
+				goto choice;
+				break;
+			case 3 :
+				obj->kali();
+				getch ();
+				system ("cls");
+				goto choice;
+				break;
+			case 4 :
+				obj->bagi();
+				getch ();
+				system ("cls");
+				goto choice;
+				break;
+			case 5 :
+				exit (0);   
+		}
+		return 0;
+	}
